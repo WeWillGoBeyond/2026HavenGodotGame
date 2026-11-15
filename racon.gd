@@ -8,7 +8,14 @@ var dir: Vector2 = Vector2.ZERO
 var accel: float = 10.0
 var friction: float = 8.0
 
-var replay_duration
+var replay_duration: float = 3.0
+var rewinding: bool = false
+var rewind_values = {
+	"position": [],
+	"rotation": [],
+	"velocity": [],
+}
+	
 
 
 
@@ -23,6 +30,9 @@ func _ready() -> void:
 	pass
 	
 func _physics_process(delta: float) -> void:
+	
+	#save rewind values
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

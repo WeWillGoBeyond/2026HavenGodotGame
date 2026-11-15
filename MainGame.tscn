@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cp1qcgn1s5geu" path="res://Racon.tscn" id="1_3tbxw"]
 [ext_resource type="Texture2D" uid="uid://cg82a7y5cqtqk" path="res://PreloadedAssets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_e3m3f"]
+[ext_resource type="AudioStream" uid="uid://bnliofoa32n5f" path="res://PreloadedAssets/Ninja Adventure - Asset Pack/Audio/ninjas of 1985.wav" id="3_ws5ob"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ws5ob"]
 texture = ExtResource("2_e3m3f")
@@ -226,3 +227,7 @@ scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_x5ji8")
 color = Color(0.9401968, 0.6377365, 0.8532651, 1)
 anim_speed_curve = SubResource("Curve_8qpgq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=400009262]
+stream = ExtResource("3_ws5ob")
+autoplay = true

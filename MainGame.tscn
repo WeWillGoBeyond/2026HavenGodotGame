@@ -166,6 +166,37 @@ texture = ExtResource("2_e3m3f")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ws5ob")
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_e3m3f"]
+
+[sub_resource type="Curve" id="Curve_pv6b4"]
+_limits = [-500.0, 500.0, 0.0, 1.0]
+_data = [Vector2(0, -494.25293), 0.0, 0.0, 0, 0, Vector2(0.08156029, -454.02307), 0.0, 0.0, 0, 0, Vector2(0.8758865, 500), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_8dnxm"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, -200), 0.0, 0.0, 0, 0, Vector2(0.9361702, 200), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_v3hs3"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ws5ob"]
+_limits = [-357.15, 373.9, -0.3, 0.81205666]
+_data = [Vector2(0.24468085, -326.89655), 0.0, 0.0, 0, 0, Vector2(0.81205666, 360), 6871.7373, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_x5ji8"]
+_data = [Vector2(0.45390072, 0.6896552), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_8qpgq"]
+_limits = [0.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.570922, 200), 0.0, 0.0, 0, 0, Vector2(0.94680846, 200), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="Node2D" type="Node2D" unique_id=1273111398]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1081801818]
@@ -178,5 +209,26 @@ shape = SubResource("WorldBoundaryShape2D_skp44")
 zoom = Vector2(5, 5)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=893805062]
-tile_map_data = PackedByteArray("AAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAEAAEAAAD8/wEAAAAEAAEAAAA=")
+tile_map_data = PackedByteArray("AAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAD8/wEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAPAP7/AAAAAAAAAAARAP7/AAAAAAAAAAATAP7/AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAAAAAAAAAAXAP//AAAAAAAAAAAYAP//AAAAAAAAAAAZAP//AAAAAAAAAAD8//3/AAACAAkAAAD8//7/AAACAAsAAAD8////AAACAAsAAAD9/wAAAAAHAAUAAAABAAAAAAAHAAUAAAAXAP7/AAAHAAUAAAAEAPv/AAABAAkAAAAEAPz/AAACAAoAAAD8//v/AAABAAkAAAD8//z/AAACAAoAAAD8//r/AAABAAkAAAD9//r/AAABAAkAAAD+//r/AAABAAkAAAD///r/AAABAAkAAAAAAPr/AAABAAkAAAABAPr/AAABAAkAAAACAPr/AAABAAkAAAADAPr/AAABAAkAAAAEAPr/AAABAAkAAAAFAPr/AAABAAkAAAD7//r/AAABAAkAAAD9//n/AAABAAsAAAD+//n/AAABAAsAAAD///n/AAABAAsAAAAAAPn/AAABAAsAAAABAPn/AAABAAsAAAACAPn/AAABAAsAAAADAPn/AAABAAsAAAD+//j/AAABAAkAAAD///j/AAABAAkAAAAAAPj/AAABAAkAAAABAPj/AAABAAkAAAACAPj/AAABAAkAAAD///f/AAACAAoAAAAAAPf/AAACAAoAAAABAPf/AAACAAoAAAAAAPb/AAAHAAcAAAD8/wAAAAACAAsAAAAEAP3/AAACAAkAAAAEAP7/AAACAAsAAAAEAP//AAACAAsAAAAEAAAAAAACAAsAAAA=")
 tile_set = SubResource("TileSet_skp44")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1953355999]
+position = Vector2(15, -54)
+amount = 2
+texture = SubResource("CanvasTexture_e3m3f")
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 104.57
+gravity = Vector2(100, 100)
+orbit_velocity_curve = SubResource("Curve_pv6b4")
+linear_accel_curve = SubResource("Curve_8dnxm")
+damping_max = 57.894
+damping_curve = SubResource("Curve_v3hs3")
+angle_min = -720.0
+angle_max = -435.8
+angle_curve = SubResource("Curve_ws5ob")
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_x5ji8")
+color = Color(0.9401968, 0.6377365, 0.8532651, 1)
+anim_speed_curve = SubResource("Curve_8qpgq")

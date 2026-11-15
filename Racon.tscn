@@ -1,7 +1,21 @@
 [gd_scene format=3 uid="uid://cp1qcgn1s5geu"]
 
 [ext_resource type="Script" uid="uid://b7tw71r4jdsdc" path="res://racon.gd" id="1_oowre"]
+[ext_resource type="Texture2D" uid="uid://dsx8n2tl67bf" path="res://PreloadedAssets/Ninja Adventure - Asset Pack/Actor/CharacterAnimated/NinjaGreen/Separate/Roll.png" id="2_a10rr"]
 [ext_resource type="Texture2D" uid="uid://bontdo4x0ubch" path="res://PreloadedAssets/Ninja Adventure - Asset Pack/Actor/CharacterAnimated/NinjaGreen/SpriteSheet.png" id="2_oowre"]
+[ext_resource type="Script" uid="uid://h1i7wey8d1u" path="res://trial_line.gd" id="4_38j8i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gim3i"]
+atlas = ExtResource("2_a10rr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqror"]
+atlas = ExtResource("2_a10rr")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkmv0"]
+atlas = ExtResource("2_a10rr")
+region = Rect2(96, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a10rr"]
 atlas = ExtResource("2_oowre")
@@ -61,6 +75,20 @@ region = Rect2(96, 224, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_skp44"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gim3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqror")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkmv0")
+}],
+"loop": 1,
+"name": &"Role",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a10rr")
@@ -132,7 +160,12 @@ script = ExtResource("1_oowre")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=421374574]
 sprite_frames = SubResource("SpriteFrames_skp44")
-animation = &"walk_Left"
+animation = &"Role"
+
+[node name="trial_line" type="Line2D" parent="AnimatedSprite2D" unique_id=620808782]
+modulate = Color(1, 1, 1, 0.40784314)
+top_level = true
+script = ExtResource("4_38j8i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=249438657]
 position = Vector2(0, 1)

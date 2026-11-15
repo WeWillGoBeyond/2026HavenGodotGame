@@ -1,6 +1,7 @@
 extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: CharacterBody2D = $"."
+@onready var trial_line: Line2D = $AnimatedSprite2D/trial_line
 
 var velocity2: Vector2 = Vector2.ZERO 
 var speed: float = 600.0
@@ -8,7 +9,7 @@ var dir: Vector2 = Vector2.ZERO
 var accel: float = 10.0
 var friction: float = 8.0
 
-var replay_duration: float = 3
+var replay_duration: float = 3.0
 var rewinding: bool = false
 var rewind_data = {
 	"position": [],
@@ -24,15 +25,16 @@ func rewind_computation():
 func stop_rewind():
 	$CollisionShape2D.disabled = false
 	rewinding = false
+	trial_line.modulate.a = .5
 
 func start_rewind():
 	rewinding = true
 	$CollisionShape2D.disabled = false
+	trial_line.modulate.a = 1
+	
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
-
-var array = null
 
 
 func _ready() -> void:
@@ -42,6 +44,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("rewind") and not rewinding:
 		start_rewind()
+		Engine.time_scale
 		
 	if rewind_data["position"].size() == 0:
 		stop_rewind()
@@ -49,16 +52,16 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Unrewind"):
 		print("unrewound")
 		stop_rewind()
-	
-	#save rewind values
-	
+
 	
 	if rewinding:
 		rewind_computation()
 	else:
-		if rewind_data["position"].size() >= replay_duration * Engine.get_frames_per_second():
+		print("recording")
+		if rewind_data["position"].size() >= 300:
 			for key in rewind_data.keys():
 				rewind_data[key].pop_front()
+				
 		rewind_data["position"].append(global_position)
 		rewind_data["rotation"].append(rotation)
 		rewind_data["velocity"].append(velocity)
@@ -69,7 +72,9 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if rewinding:
+		return
+	elif Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
 
@@ -84,18 +89,25 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("right", "left")
-	if direction:
+	if rewinding:
+		animated_sprite_2d.play("Role")
+	elif direction == 0:
+		animated_sprite_2d.play("idle_Right")
+	else:
+		animated_sprite_2d.play("walk_Right")
+	if rewinding:
+		return
+	elif direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
 	if direction > 0:
 		animated_sprite_2d.flip_h = false
 	elif direction < 0:
 		animated_sprite_2d.flip_h = true
-	if direction == 0:
-		animated_sprite_2d.play("idle_Right")
-	else:
-		animated_sprite_2d.play("walk_Right")
+		
+
 
 
 

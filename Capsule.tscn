@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://bon3q3xviksk4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_skp44"]
+radius = 2.0083008
+height = 5.727539
 
 [node name="Node3D" type="Node3D" unique_id=1530005017]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1012572795]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.084472656, 0)
 mesh = SubResource("CapsuleMesh_skp44")

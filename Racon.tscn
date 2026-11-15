@@ -152,21 +152,30 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_skp44"]
-radius = 7.0
+[sub_resource type="Curve" id="Curve_sbqcd"]
+_data = [Vector2(0, 0.25479448), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_38j8i"]
+radius = 5.0990195
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1180832033]
 script = ExtResource("1_oowre")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=421374574]
+position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_skp44")
 animation = &"Role"
 
 [node name="trial_line" type="Line2D" parent="AnimatedSprite2D" unique_id=620808782]
 modulate = Color(1, 1, 1, 0.40784314)
 top_level = true
+width_curve = SubResource("Curve_sbqcd")
 script = ExtResource("4_38j8i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=249438657]
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_skp44")
+shape = SubResource("CircleShape2D_38j8i")
+
+[node name="Timer" type="Timer" parent="." unique_id=2005207335]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

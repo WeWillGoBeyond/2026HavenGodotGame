@@ -2,6 +2,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: CharacterBody2D = $"."
 @onready var trial_line: Line2D = $AnimatedSprite2D/trial_line
+@onready var timer: Timer = $Timer
 
 var velocity2: Vector2 = Vector2.ZERO 
 var speed: float = 600.0
@@ -9,7 +10,7 @@ var dir: Vector2 = Vector2.ZERO
 var accel: float = 10.0
 var friction: float = 8.0
 
-var replay_duration: float = 3.0
+var replay_duration: float = 3
 var rewinding: bool = false
 var rewind_data = {
 	"position": [],
@@ -17,8 +18,10 @@ var rewind_data = {
 	"velocity": [],
 }
 
+func _on_timer_timeout() -> void:
+	stop_rewind()
+
 func rewind_computation():
-	print("rewinding...")
 	player.position = rewind_data["position"].pop_back()
 	player.rotation = rewind_data["rotation"].pop_back()
 	
@@ -30,7 +33,9 @@ func stop_rewind():
 func start_rewind():
 	rewinding = true
 	$CollisionShape2D.disabled = false
-	trial_line.modulate.a = 1
+	trial_line.modulate.a = .8
+	timer.start()
+	
 	
 
 const SPEED = 200.0
@@ -50,14 +55,12 @@ func _physics_process(delta: float) -> void:
 		stop_rewind()
 	
 	if Input.is_action_just_pressed("Unrewind"):
-		print("unrewound")
 		stop_rewind()
 
 	
 	if rewinding:
 		rewind_computation()
 	else:
-		print("recording")
 		if rewind_data["position"].size() >= 300:
 			for key in rewind_data.keys():
 				rewind_data[key].pop_front()

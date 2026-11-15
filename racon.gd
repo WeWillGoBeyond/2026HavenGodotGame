@@ -2,6 +2,16 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: CharacterBody2D = $"."
 
+var velocity2: Vector2 = Vector2.ZERO 
+var speed: float = 600.0
+var dir: Vector2 = Vector2.ZERO
+var accel: float = 10.0
+var friction: float = 8.0
+
+var replay_duration
+
+
+
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0

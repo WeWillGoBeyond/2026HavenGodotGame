@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cp1qcgn1s5geu"]
+
+[ext_resource type="Script" uid="uid://b7tw71r4jdsdc" path="res://racon.gd" id="1_oowre"]
+[ext_resource type="Texture2D" uid="uid://cru6eg06s3k8x" path="res://PreloadedAssets/Ninja Adventure - Asset Pack/Actor/Animal/Racoon/SpriteSheet.png" id="1_tighf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oowre"]
+atlas = ExtResource("1_tighf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a10rr"]
+atlas = ExtResource("1_tighf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7vcnm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oowre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a10rr")
+}],
+"loop": 1,
+"name": &"Run_right",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_skp44"]
+radius = 6.0827627
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1180832033]
+script = ExtResource("1_oowre")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1305628157]
+sprite_frames = SubResource("SpriteFrames_7vcnm")
+animation = &"Run_right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=249438657]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_skp44")

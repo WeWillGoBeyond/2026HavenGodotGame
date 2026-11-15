@@ -3,8 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://cp1qcgn1s5geu" path="res://Racon.tscn" id="1_3tbxw"]
 [ext_resource type="Texture2D" uid="uid://cg82a7y5cqtqk" path="res://PreloadedAssets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_e3m3f"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_skp44"]
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ws5ob"]
 texture = ExtResource("2_e3m3f")
 0:0/0 = 0
@@ -168,14 +166,10 @@ sources/0 = SubResource("TileSetAtlasSource_ws5ob")
 
 [node name="Node2D" type="Node2D" unique_id=1273111398]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1081801818]
-position = Vector2(0, 21)
-shape = SubResource("WorldBoundaryShape2D_skp44")
-
 [node name="CharacterBody2D" parent="." unique_id=1180832033 instance=ExtResource("1_3tbxw")]
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=2047675588]
-zoom = Vector2(5, 5)
+zoom = Vector2(4, 4)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=893805062]
 tile_map_data = PackedByteArray("AAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAEAAEAAAD8/wEAAAAEAAEAAAA=")

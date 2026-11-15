@@ -330,6 +330,13 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.570922, 200), 0.0, 0.0, 0, 0, 
 point_count = 3
 
 [node name="Node2D" type="Node2D" unique_id=1273111398]
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+metadata/_edit_horizontal_guides_ = [-159.0]
+>>>>>>> parent of d4b4001 (Update MainGame.tscn)
+>>>>>>> parent of 56e0c64 (sadf)
 
 [node name="CharacterBody2D" parent="." unique_id=1180832033 instance=ExtResource("1_3tbxw")]
 z_index = 2

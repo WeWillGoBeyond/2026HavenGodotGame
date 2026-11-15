@@ -71,16 +71,15 @@ func _physics_process(delta: float) -> void:
 	velocity2 = velocity
 	
 	if not rewinding:
-		if replay_duration * Engine.physics_ticks_per_second == rewind_values["position"].size():
+		
 			
-			for key in rewind_values.keys():
+		for key in rewind_values.keys():
 				rewind_values[key].pop_front()
 		
-		rewind_values["position"].append(global_position)
-		rewind_values["rotation"].append(rotation)
-		rewind_values["velocity"].append(velocity)
-	else:
-		compute_rewind(delta)
+	rewind_values["position"].append(global_position)
+	rewind_values["rotation"].append(rotation)
+	rewind_values["velocity"].append(velocity)
+
 		
 func rewind() -> void:
 	rewinding = true

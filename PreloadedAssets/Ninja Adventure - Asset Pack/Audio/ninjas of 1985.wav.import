@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bnliofoa32n5f"
+path="res://.godot/imported/ninjas of 1985.wav-d35264a115d06923beb22a6dea017035.sample"
+
+[deps]
+
+source_file="res://PreloadedAssets/Ninja Adventure - Asset Pack/Audio/ninjas of 1985.wav"
+dest_files=["res://.godot/imported/ninjas of 1985.wav-d35264a115d06923beb22a6dea017035.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

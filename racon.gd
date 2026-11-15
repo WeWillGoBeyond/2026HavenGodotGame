@@ -8,7 +8,7 @@ var dir: Vector2 = Vector2.ZERO
 var accel: float = 10.0
 var friction: float = 8.0
 
-var replay_duration: float = 3.0
+var replay_duration: float = 3
 var rewinding: bool = false
 var rewind_values = {
 	"position": [],
@@ -30,6 +30,10 @@ func _ready() -> void:
 	pass
 	
 func _physics_process(delta: float) -> void:
+	if rewinding: return
+	
+	if Input.is_action_just_pressed("rewind"):
+		rewind()
 	
 	#save rewind values
 	
@@ -75,5 +79,24 @@ func _physics_process(delta: float) -> void:
 		rewind_values["position"].append(global_position)
 		rewind_values["rotation"].append(rotation)
 		rewind_values["velocity"].append(velocity)
+	else:
+		compute_rewind(delta)
+		
+func rewind() -> void:
+	rewinding = true
+	$CollisionShape2D.set_deferred("disabled", true)
+	player.rewind()
+	
+	
 
+	
+func compute_rewind(delta: float) -> void:
+	var pos = rewind_values["position"].pop_back()
+	if rewind_values["position"].is_empty():
+		$CollisionShape2D.set_deferred("disabled", false)
+		rewinding = false
+		global_position = pos
+		velocity = rewind_values["velocity"][0]
+		return
+			
 	

@@ -10,15 +10,24 @@ var friction: float = 8.0
 
 var replay_duration: float = 3
 var rewinding: bool = false
-var rewind_values = {
+var rewind_data = {
 	"position": [],
 	"rotation": [],
 	"velocity": [],
 }
+
+func rewind_computation():
+	print("rewinding...")
+	player.position = rewind_data["position"].pop_back()
+	player.rotation = rewind_data["rotation"].pop_back()
 	
+func stop_rewind():
+	$CollisionShape2D.disabled = false
+	rewinding = false
 
-
-
+func start_rewind():
+	rewinding = true
+	$CollisionShape2D.disabled = false
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
@@ -30,12 +39,30 @@ func _ready() -> void:
 	pass
 	
 func _physics_process(delta: float) -> void:
-	if rewinding: return
 	
-	if Input.is_action_just_pressed("rewind"):
-		rewind()
+	if Input.is_action_just_pressed("rewind") and not rewinding:
+		start_rewind()
+		
+	if rewind_data["position"].size() == 0:
+		stop_rewind()
+	
+	if Input.is_action_just_pressed("Unrewind"):
+		print("unrewound")
+		stop_rewind()
 	
 	#save rewind values
+	
+	
+	if rewinding:
+		rewind_computation()
+	else:
+		if rewind_data["position"].size() >= replay_duration * Engine.get_frames_per_second():
+			for key in rewind_data.keys():
+				rewind_data[key].pop_front()
+		rewind_data["position"].append(global_position)
+		rewind_data["rotation"].append(rotation)
+		rewind_data["velocity"].append(velocity)
+	move_and_slide()
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -44,8 +71,15 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		
+	
 
+
+		
+	global_position = position
+	
+
+		
+	
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -62,27 +96,12 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play("idle_Right")
 	else:
 		animated_sprite_2d.play("walk_Right")
-		
-	
-	
-	move_and_slide()
 
-		
-func rewind() -> void:
-	rewinding = true
-	$CollisionShape2D.set_deferred("disabled", true)
-	player.rewind()
+
+
+	
 	
 	
 
-	
-func compute_rewind(delta: float) -> void:
-	var pos = rewind_values["position"].pop_back()
-	if rewind_values["position"].is_empty():
-		$CollisionShape2D.set_deferred("disabled", false)
-		rewinding = false
-		global_position = pos
-		velocity = rewind_values["velocity"][0]
-		return
-			
+
 	

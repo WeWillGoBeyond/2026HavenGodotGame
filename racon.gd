@@ -37,7 +37,6 @@ func _physics_process(delta: float) -> void:
 	
 	#save rewind values
 	
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -67,6 +66,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	move_and_slide()
+<<<<<<< HEAD
 	
 	velocity2 = velocity
 	
@@ -99,3 +99,5 @@ func compute_rewind(delta: float) -> void:
 		return
 			
 	
+=======
+>>>>>>> 56e0c648d73927ae0cc93cc33032f7482febd1f9

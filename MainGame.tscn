@@ -3,8 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://cp1qcgn1s5geu" path="res://Racon.tscn" id="1_3tbxw"]
 [ext_resource type="Texture2D" uid="uid://cg82a7y5cqtqk" path="res://PreloadedAssets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_e3m3f"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_skp44"]
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ws5ob"]
 texture = ExtResource("2_e3m3f")
 0:0/0 = 0
@@ -199,14 +197,10 @@ point_count = 3
 
 [node name="Node2D" type="Node2D" unique_id=1273111398]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1081801818]
-position = Vector2(0, 21)
-shape = SubResource("WorldBoundaryShape2D_skp44")
-
 [node name="CharacterBody2D" parent="." unique_id=1180832033 instance=ExtResource("1_3tbxw")]
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=2047675588]
-zoom = Vector2(5, 5)
+zoom = Vector2(4, 4)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=893805062]
 tile_map_data = PackedByteArray("AAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAD8/wEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAPAP7/AAAAAAAAAAARAP7/AAAAAAAAAAATAP7/AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAAAAAAAAAAXAP//AAAAAAAAAAAYAP//AAAAAAAAAAAZAP//AAAAAAAAAAD8//3/AAACAAkAAAD8//7/AAACAAsAAAD8////AAACAAsAAAD9/wAAAAAHAAUAAAABAAAAAAAHAAUAAAAXAP7/AAAHAAUAAAAEAPv/AAABAAkAAAAEAPz/AAACAAoAAAD8//v/AAABAAkAAAD8//z/AAACAAoAAAD8//r/AAABAAkAAAD9//r/AAABAAkAAAD+//r/AAABAAkAAAD///r/AAABAAkAAAAAAPr/AAABAAkAAAABAPr/AAABAAkAAAACAPr/AAABAAkAAAADAPr/AAABAAkAAAAEAPr/AAABAAkAAAAFAPr/AAABAAkAAAD7//r/AAABAAkAAAD9//n/AAABAAsAAAD+//n/AAABAAsAAAD///n/AAABAAsAAAAAAPn/AAABAAsAAAABAPn/AAABAAsAAAACAPn/AAABAAsAAAADAPn/AAABAAsAAAD+//j/AAABAAkAAAD///j/AAABAAkAAAAAAPj/AAABAAkAAAABAPj/AAABAAkAAAACAPj/AAABAAkAAAD///f/AAACAAoAAAAAAPf/AAACAAoAAAABAPf/AAACAAoAAAAAAPb/AAAHAAcAAAD8/wAAAAACAAsAAAAEAP3/AAACAAkAAAAEAP7/AAACAAsAAAAEAP//AAACAAsAAAAEAAAAAAACAAsAAAA=")

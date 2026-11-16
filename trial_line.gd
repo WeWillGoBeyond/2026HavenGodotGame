@@ -1,5 +1,4 @@
 extends Line2D
-@onready var player: CharacterBody2D = $"../.."
 
 
 

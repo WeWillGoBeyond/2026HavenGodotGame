@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bqce5fqefybkk" path="res://PreloadedAssets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="4_pg3pn"]
 [ext_resource type="PackedScene" uid="uid://d0m0mmn52y4qc" path="res://Killzone.tscn" id="5_pg3pn"]
 [ext_resource type="Texture2D" uid="uid://7rv2g3qr7vdg" path="res://PreloadedAssets/Ninja Adventure - Asset Pack/Ui/Theme/Theme Wood/arrow_left.png" id="6_kvj1a"]
-[ext_resource type="Script" uid="uid://22nyi8lnnbhi" path="res://area_2d.gd" id="7_abtea"]
+[ext_resource type="Script" uid="uid://dsxf4uxe0hnv5" path="res://NewLevel.gd" id="7_abtea"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvj1a"]
 texture = ExtResource("2_e3m3f")
@@ -931,7 +931,7 @@ tile_set = SubResource("TileSet_4plt3")
 
 [node name="CharacterBody2D" parent="." unique_id=1180832033 instance=ExtResource("1_3tbxw")]
 z_index = 2
-position = Vector2(-120, -21)
+position = Vector2(2106, -160)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=2047675588]
 zoom = Vector2(4, 4)
@@ -1013,3 +1013,5 @@ script = ExtResource("7_abtea")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1655169699]
 position = Vector2(2393, -168)
 shape = SubResource("RectangleShape2D_skp44")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

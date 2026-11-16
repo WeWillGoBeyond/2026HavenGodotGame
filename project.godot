@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="(Kyle & Jordan) 2026HavenGame"
-run/main_scene="uid://bgfdosk35cojm"
+run/main_scene="uid://vidovg34emwy"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

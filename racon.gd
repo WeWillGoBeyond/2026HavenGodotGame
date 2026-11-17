@@ -81,6 +81,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 			
 	global_position = position
+	
+	if Input.is_action_just_pressed("attack"):
+		animated_sprite_2d.play("attack")
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

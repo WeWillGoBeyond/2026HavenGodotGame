@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b7tw71r4jdsdc" path="res://racon.gd" id="1_oowre"]
 [ext_resource type="Texture2D" uid="uid://dsx8n2tl67bf" path="res://PreloadedAssets/Ninja Adventure - Asset Pack/Actor/CharacterAnimated/NinjaGreen/Separate/Roll.png" id="2_a10rr"]
 [ext_resource type="Texture2D" uid="uid://bontdo4x0ubch" path="res://PreloadedAssets/Ninja Adventure - Asset Pack/Actor/CharacterAnimated/NinjaGreen/SpriteSheet.png" id="2_oowre"]
+[ext_resource type="Texture2D" uid="uid://dvixfb0ladbnd" path="res://PreloadedAssets/Ninja Adventure - Asset Pack/Actor/CharacterAnimated/NinjaGreen/Separate/Attack.png" id="3_7bdcj"]
 [ext_resource type="Script" uid="uid://h1i7wey8d1u" path="res://trial_line.gd" id="4_38j8i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gim3i"]
@@ -16,6 +17,22 @@ region = Rect2(96, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nkmv0"]
 atlas = ExtResource("2_a10rr")
 region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih2ad"]
+atlas = ExtResource("3_7bdcj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r6ib"]
+atlas = ExtResource("3_7bdcj")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14anc"]
+atlas = ExtResource("3_7bdcj")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj5ew"]
+atlas = ExtResource("3_7bdcj")
+region = Rect2(96, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a10rr"]
 atlas = ExtResource("2_oowre")
@@ -88,6 +105,23 @@ animations = [{
 "loop": 1,
 "name": &"Role",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih2ad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r6ib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14anc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj5ew")
+}],
+"loop": 1,
+"name": &"attack",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -165,7 +199,8 @@ script = ExtResource("1_oowre")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=421374574]
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_skp44")
-animation = &"Role"
+animation = &"attack"
+frame_progress = 0.45847338
 
 [node name="trial_line" type="Line2D" parent="AnimatedSprite2D" unique_id=620808782]
 modulate = Color(1, 1, 1, 0.40784314)

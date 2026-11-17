@@ -5,7 +5,7 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body == character_body_2d:
-		timer.start()
+		character_body_2d.position = Vector2(-312.0, -164.0)
 
 
 func _on_timer_timeout() -> void:
